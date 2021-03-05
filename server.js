@@ -30,3 +30,19 @@ app.post('/api/reservation', (req, res) => {
 // Starts the server to begin listening
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
+
+class Reservation {
+  constructor(name, phoneNumber, email, uniqueID) {
+    this.name = name;
+    this.phoneNumber = phoneNumber;
+    this.uniqueID = createID();
+    this.email = email;
+  }
+
+  createID() {
+    var string = this.name.substr(0, 3);
+    var start = this.phoneNumber.length - 4;
+    string += this.phoneNumber.substr(start, 4);
+    return string;
+  }
+}
